@@ -5,10 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta 
     name="description" 
-    content="Generate powerfull Password. We provide multible Password formats, including: numbers, uppercase letters, symbols, and lowercase letters.">
+    content="Generate powerful Passwords. We provide multiple Password formats, including: numbers, uppercase letters, symbols, and lowercase letters.">
   <title>Password Generator</title>
+  <link rel="stylesheet" href="/assets/global.css">
+  <!-- Added specific styles for the generator layout -->
+  <link rel="stylesheet" href="/assets/index.css"> 
 </head>
 <body>
+
+  <main class="app-viewport">
+    <div class="password-generator-wrapper">
+      
+      <!-- Terminal Window Bar -->
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <span class="terminal-title">pass-gen v1.0.1</span>
+      </div>
+
+      <div class="password-generator">
+        <h1>Generate password</h1>
+        <p style="color: #8D8D8D; margin-bottom: 20px;">> Cryptographically secure generator</p>
+
+        <form id="password-generator-form" autocomplete="off">
+          
+          <!-- Password Output & Copy Button -->
+          <div class="your-password">
+            <input type="text" id="password-output" readonly placeholder="Generating..." aria-label="Generated Password">
+            <button type="button" id="btn-copy" class="btn-copy" title="Copy password to clipboard">
+              [ COPY ]
+            </button>
+          </div>
+
+          <!-- Password Strength Indicator -->
+          <div class="strength-meter">
+            <span class="strength-label">Strength:</span>
+            <div class="strength-bars">
+              <div class="bar" id="s-bar-1"></div>
+              <div class="bar" id="s-bar-2"></div>
+              <div class="bar" id="s-bar-3"></div>
+              <div class="bar" id="s-bar-4"></div>
+            </div>
+            <span class="strength-text" id="strength-text">WEAK</span>
+          </div>
+
+          <div class="hr"></div>
+
+          <!-- Decorated Length Control with + and - -->
+          <div class="option-group">
+            <label for="length-input">> Password length</label>
+            <div class="length-control">
+              <button type="button" id="btn-minus" class="btn-counter" aria-label="Decrease length">-</button>
+              <input type="number" id="length-input" class="length-display" value="16" min="4" max="64" readonly>
+              <button type="button" id="btn-plus" class="btn-counter" aria-label="Increase length">+</button>
+            </div>
+          </div>
+
+          <!-- Character Set Options -->
+          <div class="option-group">
+            <label for="lowercase">
+              <input type="checkbox" id="lowercase" class="custom-checkbox" checked>
+              <span>lowercase (a-z)</span>
+            </label>
+          </div>
+
+          <div class="option-group">
+            <label for="uppercase">
+              <input type="checkbox" id="uppercase" class="custom-checkbox" checked>
+              <span>uppercase (A-Z)</span>
+            </label>
+          </div>
+
+          <div class="option-group">
+            <label for="numbers">
+              <input type="checkbox" id="numbers" class="custom-checkbox" checked>
+              <span>numbers (0-9)</span>
+            </label>
+          </div>
+
+          <div class="option-group">
+            <label for="symbols">
+              <input type="checkbox" id="symbols" class="custom-checkbox" checked>
+              <span>symbols (!@#$)</span>
+            </label>
+          </div>
+
+          <div id="error-banner" class="error-banner"></div>
+
+          <button type="submit" class="btn-submit">
+            <span>> GENERATE NEW PASSWORD</span>
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </main>
   
+  <script src="/assets/index.js"></script>
 </body>
 </html>
